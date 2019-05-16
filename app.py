@@ -260,4 +260,4 @@ if __name__ == '__main__':
     #http_serve = WSGIServer(("0.0.0.0",5000),app,handler_class=WebSocketHandler)
     #http_serve.serve_forever()
     #socketio.run(app,debug=True)
-    socketio.run(app,host="0.0.0.0",debug=True)
+    socketio.run(app,host="0.0.0.0",debug=False)
