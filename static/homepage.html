@@ -277,10 +277,9 @@
                 var laypage = layui.laypage
                     , layer = layui.layer;
 
-                //总页数低于页码总数
                 laypage.render({
                     elem: 'paging'
-                    , count: total, //数据总数
+                    , count: total,
                     limit: size,
                     jump: function (obj, first) {
                         $(".layui-laypage-prev").html("Prev");
@@ -303,11 +302,11 @@
                 shadeClose: true,
                 shade: 0.8,
                 area: ['580px', '500px'],
-                content: '/static/submit.html' //iframe的url
+                content: '/static/submit.html'
             });
         }
 
-        layui.use('layer', function () { //独立版的layer无需执行这一句
+        layui.use('layer', function () { 
             $ = layui.jquery, layer = layui.layer;
             $("#keyword").bind("keyup", function (e) {
                 sugguest();

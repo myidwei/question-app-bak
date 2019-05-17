@@ -94,7 +94,7 @@
 
     <script>
         var $ = null, layer = null, form = null;
-        layui.use(['layer', 'form'], function () { //独立版的layer无需执行这一句
+        layui.use(['layer', 'form'], function () {
             $ = layui.jquery, layer = layui.layer, form = layui.form;
             $.get("/users/user_info", function (ret) {
                 if (ret.code != 0) {

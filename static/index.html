@@ -61,7 +61,7 @@
 
 <script>
     var $ = null,layer = null;
-    layui.use('layer', function(){ //独立版的layer无需执行这一句
+    layui.use('layer', function(){ 
         $ = layui.jquery, layer = layui.layer;
         
     });
@@ -108,7 +108,7 @@
             shadeClose: true,
             shade: 0.8,
             area: ['580px', '500px'],
-            content: '/add' //iframe的url
+            content: '/add'
         }); 
     }
 
@@ -119,7 +119,7 @@
             shadeClose: true,
             shade: 0.8,
             area: ['580px', '500px'],
-            content: '/add?id=' + id //iframe的url
+            content: '/add?id=' + id
         }); 
     
     }
@@ -140,7 +140,7 @@
 
     function del(id){
         layer.confirm('Are you sure?', {
-            btn: ['OK','Cancel'] //按钮
+            btn: ['OK','Cancel'] 
         }, function(){
             layer.msg('Delete successful');
             remove(id);
@@ -154,10 +154,9 @@
             var laypage = layui.laypage
                 ,layer = layui.layer;
   
-            //总页数低于页码总数
             laypage.render({
                 elem: 'paging'
-                ,count: total, //数据总数
+                ,count: total, 
                 limit:size,
                 jump: function(obj, first){
 		$(".layui-laypage-prev").html("Prev");
