@@ -20,32 +20,20 @@ def is_login():
     user = session.get('login_user')
     return user != None
 
-# def send_mail(email,subject,content):
-#     encoding = 'utf-8'
-#     mail = MIMEText(content.encode(encoding),'plain',encoding)
-#     mail['Subject'] = Header(subject,encoding)
-#     mail['From'] = "wattsappbronx@outlook.com"
-#     mail['To'] = email
-#     mail['Date'] = formatdate()
-#     smtp = smtplib.SMTP("smtp.office365.com",587)
-#     smtp.set_debuglevel(1)
-#     smtp.ehlo()
-#     smtp.starttls()
-#     smtp.ehlo()
-#     smtp.login("wattsappbronx@outlook.com", "wattsapp_123") 
-#     smtp.sendmail("wattsappbronx@outlook.com", email, mail.as_string()); 
-#     smtp.quit()
-
 def send_mail(email,subject,content):
     encoding = 'utf-8'
     mail = MIMEText(content.encode(encoding),'plain',encoding)
     mail['Subject'] = Header(subject,encoding)
-    mail['From'] = "myidwei@qq.com"
+    mail['From'] = "wattsappbronx@outlook.com"
     mail['To'] = email
     mail['Date'] = formatdate()
-    smtp = smtplib.SMTP_SSL("smtp.qq.com",465)
-    smtp.login("myidwei@qq.com", "veuqwuizssqfbidf") 
-    smtp.sendmail("myidwei@qq.com", email, mail.as_string()); 
+    smtp = smtplib.SMTP("smtp.office365.com",587)
+    smtp.set_debuglevel(1)
+    smtp.ehlo()
+    smtp.starttls()
+    smtp.ehlo()
+    smtp.login("wattsappbronx@outlook.com", "wattsapp_123") 
+    smtp.sendmail("wattsappbronx@outlook.com", email, mail.as_string()); 
     smtp.quit()
 
 @users.route('/reg')

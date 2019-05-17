@@ -6,10 +6,8 @@ from database import *
 from flask import jsonify, request, make_response, session
 import json
 import os
-from geventwebsocket.handler import WebSocketHandler
 from gevent.pywsgi import WSGIServer
 from users import users
-from chat import chat
 from commons import *
 
 from flask_socketio import SocketIO
@@ -17,8 +15,6 @@ from flask_socketio import SocketIO
 app = create_app()
 app.config['SECRET_KEY'] = os.urandom(24)
 app.register_blueprint(users, url_prefix='/users')
-app.register_blueprint(chat, url_prefix='/chat')
-socketio = SocketIO(app)
 
 @app.route('/')
 def search_page():
@@ -133,9 +129,7 @@ def get_by_tag(id,page):
         data.append(obj)
     return success({'total':count[0],'list':data})
 
-
 #manager
-
 @app.route('/question/update',methods=["POST"])
 def update():
     user = user_info()
@@ -240,24 +234,9 @@ def all_tags():
 def all_tag_and_category():
     return success({'tags':convert_dict(get_tag_list()),'categories':convert_dict(get_category_list())})
 
-#websocket chat
-@socketio.on('connect')
-def on_connect():
-    print "New Connection..."
-
-@socketio.on('disconnect')
-def on_disconnect():
-    print "Disconnect..."
-
-@socketio.on('new')
-def handle_message(message):
-    print('new chat: ')
-    print(message);
-
-
 if __name__ == '__main__':
-    #app.run(host='0.0.0.0')
-    #http_serve = WSGIServer(("0.0.0.0",5000),app,handler_class=WebSocketHandler)
-    #http_serve.serve_forever()
+    app.run(host='0.0.0.0')
+    http_serve = WSGIServer(("0.0.0.0",5000),app)
+    http_serve.serve_forever()
     #socketio.run(app,debug=True)
-    socketio.run(app,host="0.0.0.0",debug=False)
+    #app.run(host="0.0.0.0",debug=False)
